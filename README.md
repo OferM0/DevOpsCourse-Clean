@@ -151,6 +151,7 @@ I used
 ssh ofermordehai0@<VM_EXTERNAL_IP>
 ```
 ✅ Screenshot:
+![SSH Connection](ConnectToVm.png)
 
 ---
 
@@ -162,6 +163,7 @@ sudo apt update
 sudo apt install -y docker.io
 ```
 ✅ Screenshot:
+![Open Firewall](InstallDockerOnVm.png)
 
 ---
 
@@ -178,6 +180,7 @@ Check Docker version:
 docker --version
 ```
 ✅ Screenshot:
+![Open Firewall](EnableDockerOnVm.png)
 
 ---
 
@@ -185,6 +188,7 @@ docker --version
 Allow TCP ports needed for your app (80, 5000, 3000) so services are accessible publicly.
 
 ✅ Screenshot:
+![Open Firewall](allowFirewall.png)
 
 ---
 
@@ -196,6 +200,7 @@ sudo docker pull ofermo/devopscourse-backend:latest
 sudo docker pull ofermo/devopscourse-frontend:latest
 ```
 ✅ Screenshot:
+![Open Firewall](PullImagesOnVm.png)
 
 ---
 
@@ -208,6 +213,7 @@ sudo docker run -d -p 5000:5000 --name backend ofermo/devopscourse-backend:lates
 sudo docker run -d -p 3000:80 --name frontend ofermo/devopscourse-frontend:latest
 ```
 ✅ Screenshot:
+![Open Firewall](runImagesOnVM.png)
 
  ### Option B — Run in Same Docker Network
 Create a Docker network so that frontend can reach backend via hostname backend.
@@ -221,6 +227,7 @@ sudo docker run -d --name backend --network devops-network -p 5000:5000 ofermo/d
 sudo docker run -d --name frontend --network devops-network -p 3000:80 ofermo/devopscourse-frontend:latest
 ```
 ✅ Screenshot:
+![Open Firewall](ranImagesInSameNetwork.png)
 
 ---
 
@@ -231,8 +238,10 @@ Check backend directly:
 curl http://localhost:5000/api/notes
 ```
 ✅ Screenshot (Terminal):
+![Open Firewall](checkBackend.png)
 
 ✅ Screenshot (Browser):
+![Open Firewall](checkBackend2.png)
 
 ---
 
@@ -241,3 +250,4 @@ curl http://localhost:5000/api/notes
 Navigate in browser: http://35.184.209.216:3000
 ```
 ✅ Screenshot (Terminal):
+![Open Firewall](CheckFront.png)
