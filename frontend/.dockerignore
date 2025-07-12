@@ -1,0 +1,20 @@
+# Global ignores​
+
+.git
+
+.gitignore
+
+README.md
+
+# Ignore Docker files
+Dockerfile         
+.dockerignore       
+docker-compose.yml
+
+# Node dependencies​
+
+**/node_modules
+
+**/npm-debug.log
+
+**/yarn.lock
