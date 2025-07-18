@@ -118,4 +118,4 @@ curl http://localhost:5000/api/notes
 Navigate in browser: http://35.184.209.216:3000
 ```
 ✅ Screenshot (Terminal):
-![Open Firewall](CheckFront.png)
+![Check Front](images/CheckFront.png)
