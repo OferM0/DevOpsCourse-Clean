@@ -123,8 +123,8 @@ yaml
 
 | GitHub Actions tab showing successful CI run 
 | -------------------------------------------- 
-| ![CI Success](./screenshots/ci-success.png)  
-
+| ![CI Success](images/checkFrontendCIWorkflowWorkOnPush.png)  
+| ![CD Success](images/checkBackendCIWorkflowWorkOnPush.png)  
 ---
 
 
@@ -258,10 +258,7 @@ yaml
 
 * Builds the frontend and backend Docker images using the Dockerfiles.
 * Pushes the latest versions to Docker Hub.
-
-> 📸 Screenshot: 🐳 Pushed images to Docker Hub
-> ![Pushed Images](images/dockerhub-push.png)
-
+* 
 ---
 
 ### 2. 🔧 Install Docker & Compose on VM (if not already installed)
@@ -269,18 +266,11 @@ yaml
 * Connects to your VM over SSH using `appleboy/ssh-action`.
 * Installs Docker and Docker Compose if missing.
 
-> 📸 Screenshot: 🔧 Install Docker tools on VM
-> ![Install Docker](images/install-docker.png)
-
 ---
 
 ### 3. 📤 Copy `docker-compose.yml` to VM
 
 * Copies only `docker-compose.yml` file to remote VM.
-
-> 📸 Screenshot: 📄 docker-compose transferred to VM
-> ![Transfer Compose](images/docker-compose-copy.png)
-
 ---
 
 ### 4. 🛑 Stop Old Containers, Pull New Images & Deploy
@@ -288,9 +278,6 @@ yaml
 * Stops any running containers
 * Pulls new backend/frontend images
 * Runs `docker-compose up -d` to start updated containers
-
-> 📸 Screenshot: 🛑 Old containers stopped & new started
-> ![Deployment Screenshot](images/docker-compose-up.png)
 
 ---
 
@@ -304,6 +291,13 @@ sudo docker ps
 
 > 📸 Screenshot: ✅ Containers running
 > ![Running Containers](images/docker-ps.png)
+
+### Check CD workflow is succesfully :
+
+> 📸 Screenshot: succesfull CD workflow
+> ![succesfull CD workflow](images/checkCDWorkflowWorkOnPush.png)
+
+---
 
 ### Access your app in browser:
 
