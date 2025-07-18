@@ -43,6 +43,14 @@ jobs:
             else
               echo "✅ Docker already installed."
             fi
+
+            if ! command -v docker-compose >/dev/null 2>&1; then
+              echo "📦 Installing docker-compose..."
+              sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+              sudo chmod +x /usr/local/bin/docker-compose
+            else
+              echo "✅ docker-compose already installed."
+            fi
             
       - name: 📂 Copy docker-compose.yml to VM
         uses: appleboy/scp-action@v0.1.4
