@@ -17,72 +17,105 @@ I used
 
 ```bash
 ssh ofermordehai0@<VM_EXTERNAL_IP>
+```
 ✅ Screenshot:
+![SSH Connection](ConnectToVm.png)
 
-3. Install Docker on VM
+---
+
+## 3. Install Docker on VM
 Update packages and install Docker:
 
-bash
+```bash
 sudo apt update
 sudo apt install -y docker.io
+```
 ✅ Screenshot:
+![Open Firewall](InstallDockerOnVm.png)
 
-4. Enable Docker Service
+---
+
+## 4. Enable Docker Service
 Enable Docker to start automatically:
 
-bash
+```bash
 sudo systemctl enable docker
+```
 
 Check Docker version:
 
-bash
+```bash
 docker --version
+```
 ✅ Screenshot:
+![Open Firewall](EnableDockerOnVm.png)
 
-5. Open Firewall on Google Cloud
+---
+
+## 5. Open Firewall on Google Cloud
 Allow TCP ports needed for your app (80, 5000, 3000) so services are accessible publicly.
 
 ✅ Screenshot:
+![Open Firewall](allowFirewall.png)
 
-6. Pull Images from Docker Hub
+---
+
+## 6. Pull Images from Docker Hub
 Pull backend and frontend images onto the VM:
 
-bash
+```bash
 sudo docker pull ofermo/devopscourse-backend:latest
 sudo docker pull ofermo/devopscourse-frontend:latest
+```
 ✅ Screenshot:
+![Open Firewall](PullImagesOnVm.png)
 
-7. Run Containers on VM
-Option A — Run Standalone
+---
+
+## 7. Run Containers on VM
+ ### Option A — Run Standalone
 (Requires adjusting nginx.conf in frontend to point to external backend IP)
 
-bash
+```bash
 sudo docker run -d -p 5000:5000 --name backend ofermo/devopscourse-backend:latest
 sudo docker run -d -p 3000:80 --name frontend ofermo/devopscourse-frontend:latest
+```
 ✅ Screenshot:
+![Open Firewall](runImagesOnVM.png)
 
-Option B — Run in Same Docker Network
+ ### Option B — Run in Same Docker Network
 Create a Docker network so that frontend can reach backend via hostname backend.
 
 Steps:
 
-bash
+```bash
 sudo docker rm -f frontend backend
 sudo docker network create devops-network
 sudo docker run -d --name backend --network devops-network -p 5000:5000 ofermo/devopscourse-backend:latest
 sudo docker run -d --name frontend --network devops-network -p 3000:80 ofermo/devopscourse-frontend:latest
+```
 ✅ Screenshot:
+![Open Firewall](ranImagesInSameNetwork.png)
 
-8. Verify Backend Works
+---
+
+## 8. Verify Backend Works
 Check backend directly:
 
-bash
+```bash
 curl http://localhost:5000/api/notes
+```
 ✅ Screenshot (Terminal):
+![Open Firewall](checkBackend.png)
 
 ✅ Screenshot (Browser):
+![Open Firewall](checkBackend2.png)
 
-9. Verify Frontend Works
-Navigate in browser: http://35.184.209.216:3000/
-✅ Screenshot (Terminal):
+---
+
+## 9. Verify Frontend Works
 ```
+Navigate in browser: http://35.184.209.216:3000
+```
+✅ Screenshot (Terminal):
+![Open Firewall](CheckFront.png)
