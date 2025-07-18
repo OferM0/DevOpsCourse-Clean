@@ -1,13 +1,16 @@
-version: "3.8"
+version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    image: ofermo/devopscourse-backend:latest
+    container_name: backend
     ports:
       - "5000:5000"
 
   frontend:
-    build: ./frontend
+    image: ofermo/devopscourse-frontend:latest
+    container_name: frontend
     ports:
       - "3000:80"
- 
+    depends_on:
+      - backend
