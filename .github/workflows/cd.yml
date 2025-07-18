@@ -28,3 +28,18 @@ jobs:
 
       - name: 📤 Push frontend image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/devopscourse-frontend:latest
+      
+      - name: 🔧 Install Docker on VM (if missing)
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            if ! command -v docker >/dev/null 2>&1; then
+              echo "🔧 Installing Docker..."
+              curl -fsSL https://get.docker.com | sh
+              sudo usermod -aG docker $USER
+            else
+              echo "✅ Docker already installed."
+            fi
