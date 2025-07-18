@@ -52,3 +52,23 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           source: "docker-compose.yml"
           target: "/home/${{ secrets.VM_USERNAME }}/"
+
+      - name: 🚀 Deploy application on VM
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd /home/${{ secrets.VM_USERNAME }}
+
+            echo "🛑 Stopping old containers (if running)..."
+            docker compose down || true
+
+            echo "📥 Pulling latest images..."
+            docker pull ${{ secrets.DOCKER_USERNAME }}/devopscourse-backend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/devopscourse-frontend:latest
+
+            echo "🚀 Starting updated containers..."
+            docker compose up -d
+
