@@ -19,7 +19,7 @@ I used
 ssh ofermordehai0@<VM_EXTERNAL_IP>
 ```
 ✅ Screenshot:
-![SSH Connection](ConnectToVm.png)
+![SSH Connection](images/ConnectToVm.png)
 
 ---
 
@@ -31,7 +31,7 @@ sudo apt update
 sudo apt install -y docker.io
 ```
 ✅ Screenshot:
-![Open Firewall](InstallDockerOnVm.png)
+![Install Docker On Vm](images/InstallDockerOnVm.png)
 
 ---
 
@@ -48,7 +48,7 @@ Check Docker version:
 docker --version
 ```
 ✅ Screenshot:
-![Open Firewall](EnableDockerOnVm.png)
+![Enable Docker On Vm](images/EnableDockerOnVm.png)
 
 ---
 
@@ -56,7 +56,7 @@ docker --version
 Allow TCP ports needed for your app (80, 5000, 3000) so services are accessible publicly.
 
 ✅ Screenshot:
-![Open Firewall](allowFirewall.png)
+![Open Firewall](images/allowFirewall.png)
 
 ---
 
@@ -68,7 +68,7 @@ sudo docker pull ofermo/devopscourse-backend:latest
 sudo docker pull ofermo/devopscourse-frontend:latest
 ```
 ✅ Screenshot:
-![Open Firewall](PullImagesOnVm.png)
+![Pull Images OnVm](images/PullImagesOnVm.png)
 
 ---
 
@@ -81,7 +81,7 @@ sudo docker run -d -p 5000:5000 --name backend ofermo/devopscourse-backend:lates
 sudo docker run -d -p 3000:80 --name frontend ofermo/devopscourse-frontend:latest
 ```
 ✅ Screenshot:
-![Open Firewall](runImagesOnVM.png)
+![run Images On VM](images/runImagesOnVM.png)
 
  ### Option B — Run in Same Docker Network
 Create a Docker network so that frontend can reach backend via hostname backend.
@@ -95,7 +95,7 @@ sudo docker run -d --name backend --network devops-network -p 5000:5000 ofermo/d
 sudo docker run -d --name frontend --network devops-network -p 3000:80 ofermo/devopscourse-frontend:latest
 ```
 ✅ Screenshot:
-![Open Firewall](ranImagesInSameNetwork.png)
+![ran Images In Same Network](images/ranImagesInSameNetwork.png)
 
 ---
 
@@ -106,10 +106,10 @@ Check backend directly:
 curl http://localhost:5000/api/notes
 ```
 ✅ Screenshot (Terminal):
-![Open Firewall](checkBackend.png)
+![check Backend](images/checkBackend.png)
 
 ✅ Screenshot (Browser):
-![Open Firewall](checkBackend2.png)
+![check Backend2](images/checkBackend2.png)
 
 ---
 
