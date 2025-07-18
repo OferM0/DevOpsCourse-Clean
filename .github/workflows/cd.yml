@@ -73,6 +73,9 @@ jobs:
             echo "🛑 Stopping old containers (if running)..."
             sudo docker-compose down || true
 
+            echo "🧹 Removing old containers (if any)..."
+            sudo docker rm -f backend frontend || true
+      
             echo "📥 Pulling latest images..."
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/devopscourse-backend:latest
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/devopscourse-frontend:latest
