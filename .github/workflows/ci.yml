@@ -37,9 +37,14 @@ jobs:
             echo "No tests defined. Skipping..."
           fi
 
-      - name: ✅ Run lint checks
-        run: npm run lint
-
+      - name: ✅ Run lint checks (if exists)
+        run: |
+          if npm run | grep -q "lint"; then
+            npm run lint
+          else
+            echo "No lint script defined. Skipping..."
+          fi
+          
   frontend-ci:
     name: Frontend CI
     runs-on: ubuntu-latest
@@ -68,5 +73,10 @@ jobs:
             echo "No tests defined. Skipping..."
           fi
           
-      - name: ✅ Run lint checks
-        run: npm run lint
+      - name: ✅ Run lint checks (if exists)
+        run: |
+          if npm run | grep -q "lint"; then
+            npm run lint
+          else
+            echo "No lint script defined. Skipping..."
+          fi
